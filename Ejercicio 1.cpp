@@ -131,6 +131,13 @@ public:
         }
     }
 
+    void resetPila(){
+        for (size_t i = tope; i < -1; i--)        {
+            pop();
+        }
+        
+    }
+
 
 };
 
@@ -170,6 +177,11 @@ int main() {
             pilaB.mostrarValores();
             cout << "Pila A" << endl;
             pilaA.mostrarValores();
+            //reset para volver a usar las pilas
+            pilaB.resetPila();
+            for (int i = 1; i <= 10; ++i) {
+                pilaA.cargarPila(i);
+            }
             break;
         case 3:
             cout << "Pila A" << endl;
@@ -184,7 +196,6 @@ int main() {
             }else{
                 cout << "El elemento " << n << " No se encuentra en la pila" << endl;
             }
-        pilaA.mostrarValores();
 
             break;
         case 4:
@@ -197,7 +208,12 @@ int main() {
             pilaB.mostrarValores();
             cout << "Pila C" << endl;
             pilaC.mostrarValores();
-
+            //reset para volver a usar las pilas
+            pilaB.resetPila();
+            pilaC.resetPila();
+            for (int i = 1; i <= 10; ++i) {
+                pilaA.cargarPila(i);
+            }
             break;
         case 5:
             cout << "Pila A" << endl;
@@ -209,6 +225,12 @@ int main() {
             pilaB.mostrarValores();
             cout << "Pila C" << endl;
             pilaC.mostrarValores();
+            //reset para volver a usar las pilas
+            pilaB.resetPila();
+            pilaC.resetPila();
+            for (int i = 1; i <= 10; ++i) {
+                pilaA.cargarPila(i);
+            }
 
             break;
         case 6:
@@ -219,6 +241,11 @@ int main() {
             pilaA.mostrarValores();
             cout << "Pila B" << endl;
             pilaB.mostrarValores();
+            //reset para volver a usar las pilas
+            pilaB.resetPila();
+            for (int i = 1; i <= 10; ++i) {
+                pilaA.cargarPila(i);
+            }
 
             break;
         case 7:
