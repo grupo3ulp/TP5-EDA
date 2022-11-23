@@ -64,7 +64,7 @@ public:
                 cout << enteros[i] << " - ";
             }
         }else{
-            cout<<"La Pila se encuentra Vacia";
+            cout<<"la Pila se encuentra vacia";
         }
         cout << endl;
     }
@@ -138,81 +138,112 @@ int main() {
     Pila pilaA;
     Pila pilaB;
     Pila pilaC;
-    //cargando la pila A con valores del 1 al 10
-    for (int i = 1; i <= 10; ++i) {
-            pilaA.cargarPila(i);
-    }
 
- /*   cout << "Pila A" << endl;
-    pilaA.mostrarValores();*/
+    int op;
 
-//prueba metodo pasaPila
- /*   cout << "Pila A" << endl;
-    pilaA.mostrarValores();
-    pilaA.pasaPila(pilaB);
-    cout << "Pila B" << endl;
-    pilaB.mostrarValores();
-     cout << "Pila A" << endl;
-     pilaA.mostrarValores();*/
+   do   {
+        cout << "---------------------------------------------------------------------------------------" <<endl;
+        cout << "Menú principal" << endl;
+        cout << "1. Cargar la pila A." << endl;
+        cout << "2. Pasar todos los elementos de pilaA a PilaB." << endl;
+        cout << "3. Buscar un número en la pila A." << endl;
+        cout << "4. Coloca en pilaB los números pares y en PilaC los impares." << endl;
+        cout << "5. (Dada una Pila A con números, una Pila B y una Pila C vacías) Pasar los elementos de A a B de manera que queden en el mismo orden que estaban en A." << endl;
+        cout << "6. (Dada una Pila A, una variable X y una Pila Vacía B) Pasar los elementos de A a B de manera que queden en el mismo orden que estaban en A." << endl;
+        cout << "7. Dada una pila A con números, buscar si existe en A un entero “X”, y reemplazarlo por un número “Y”" << endl;
+        cout << "8. Salir" << endl;
+        cout << "---------------------------------------------------------------------------------------" <<endl;
+        cin >> op;
 
-//prueba metodo contieneE
-  /*cout << "Pila A" << endl;
-    pilaA.mostrarValores();
-    cout << "ingrese un valor a buscar" << endl;
-    int n;
-    cin >> n;
+        switch (op)    {
+        case 1:
+            for (int i = 1; i <= 10; ++i) {
+                pilaA.cargarPila(i);
+            }
+            cout << "La pila fue cargada exitosamente" << endl;
+            break;
+        case 2:
+            cout << "Pila A" << endl;
+            pilaA.mostrarValores();
+            pilaA.pasaPila(pilaB);
+            cout << "Pila B" << endl;
+            pilaB.mostrarValores();
+            cout << "Pila A" << endl;
+            pilaA.mostrarValores();
+            break;
+        case 3:
+            cout << "Pila A" << endl;
+            pilaA.mostrarValores();
+            cout << "ingrese un valor a buscar" << endl;
+            int n;
+            cin >> n;
 
-    if (pilaA.contieneE(n)) {
-        cout << "El elemento " << n << " se encuentra en la pila" << endl;
+            if (pilaA.contieneE(n)) {
+                cout << "El elemento " << n << " se encuentra en la pila" << endl;
 
-    }else{
-        cout << "El elemento " << n << " No se encuentra en la pila" << endl;
-    }
-    pilaA.mostrarValores();*/
+            }else{
+                cout << "El elemento " << n << " No se encuentra en la pila" << endl;
+            }
+        pilaA.mostrarValores();
 
-  //prueba metodo separaPila
-/*    cout << "Pila A" << endl;
-    pilaA.mostrarValores();
-    pilaA.separaPila(pilaB,pilaC);
-    cout << "Pila A" << endl;
-    pilaA.mostrarValores();
-    cout << "Pila B" << endl;
-    pilaB.mostrarValores();
-    cout << "Pila C" << endl;
-    pilaC.mostrarValores();*/
+            break;
+        case 4:
+            cout << "Pila A" << endl;
+            pilaA.mostrarValores();
+            pilaA.separaPila(pilaB,pilaC);
+            cout << "Pila A" << endl;
+            pilaA.mostrarValores();
+            cout << "Pila B" << endl;
+            pilaB.mostrarValores();
+            cout << "Pila C" << endl;
+            pilaC.mostrarValores();
 
-    //prueba metodo invierte1
- /*   cout << "Pila A" << endl;
-    pilaA.mostrarValores();
-   pilaA.Invierte1(pilaB,pilaC);
-     cout << "Pila A" << endl;
-     pilaA.mostrarValores();
-     cout << "Pila B" << endl;
-     pilaB.mostrarValores();
-     cout << "Pila C" << endl;
-     pilaC.mostrarValores();*/
+            break;
+        case 5:
+            cout << "Pila A" << endl;
+            pilaA.mostrarValores();
+            pilaA.Invierte1(pilaB,pilaC);
+            cout << "Pila A" << endl;
+            pilaA.mostrarValores();
+            cout << "Pila B" << endl;
+            pilaB.mostrarValores();
+            cout << "Pila C" << endl;
+            pilaC.mostrarValores();
 
-//prueba metodo invierte2
-   /*   cout << "Pila A" << endl;
-      pilaA.mostrarValores();
-     pilaA.Invierte2(pilaB);
-       cout << "Pila A" << endl;
-       pilaA.mostrarValores();
-       cout << "Pila B" << endl;
-       pilaB.mostrarValores();*/
+            break;
+        case 6:
+            cout << "Pila A" << endl;
+            pilaA.mostrarValores();
+            pilaA.Invierte2(pilaB);
+            cout << "Pila A" << endl;
+            pilaA.mostrarValores();
+            cout << "Pila B" << endl;
+            pilaB.mostrarValores();
 
-//prueba metodo remplazaXporY
-    /*cout << "Pila A" << endl;
-    pilaA.mostrarValores();
-    cout << "Ingrese el elemento a remplazar de la pila A"<<endl;
-    int x;
-    cin>>x;
-    cout << "Ingrese el elemento por el cual lo quiere remplzar"<<endl;
-    int y;
-    cin>>y;
-    pilaA.remplazaXporY(x,y);
-    cout << "Pila A" << endl;
-    pilaA.mostrarValores();*/
+            break;
+        case 7:
+            cout << "Pila A" << endl;
+            pilaA.mostrarValores();
+            cout << "Ingrese el elemento a remplazar de la pila A"<<endl;
+            int x;
+            cin>>x;
+            cout << "Ingrese el elemento por el cual lo quiere remplzar"<<endl;
+            int y;
+            cin>>y;
+            pilaA.remplazaXporY(x,y);
+            cout << "Pila A" << endl;
+            pilaA.mostrarValores();
+            break;
+        case 8:
+            cout << "Cerrando programa" << endl;
+            break;
+        
+        default:
+            break;
+        }
 
-         return 0;
-     }
+    } while (op !=8);
+
+
+    return 0;
+}
