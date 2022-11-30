@@ -128,7 +128,7 @@ int main() {
                 cout << "2.Extracciones" << endl;
                 cout << "3.Operaciones Varias" << endl;
                 cin >> opc;
-                while (opc > 3) {
+                while (opc > 3 || opc < 1) {
                     cout << "Opcion incorrecta, Elija nuevamente una opcion del 1 al 3" << endl;
                     cin >> opc;
                 }
@@ -177,6 +177,10 @@ int main() {
                 cout << "2.Fila de Extracciones" << endl;
                 cout << "3.Fila de Operaciones Varias" << endl;
                 cin >> opc;
+                while (opc > 3 || opc < 1) {
+                    cout << "Opcion incorrecta, Elija nuevamente una opcion del 1 al 3" << endl;
+                    cin >> opc;
+                }
                 switch (opc) {
                     case 1: {
                         Persona aux = filaD.front();
@@ -215,7 +219,10 @@ int main() {
                 cout << "2.Fila de Extracciones" << endl;
                 cout << "3.Fila de Operaciones Varias" << endl;
                 cin >> opc;
-
+                while (opc > 3 || opc < 1) {
+                    cout << "Opcion incorrecta, Elija nuevamente una opcion del 1 al 3" << endl;
+                    cin >> opc;
+                }
                 switch (opc) {
                     case 1: {
                         cout << "La primera persona de la Fila de Depocitos tiene el DNI " << filaD.front().dni << endl;
@@ -240,7 +247,10 @@ int main() {
                 cout << "2.Fila de Extracciones" << endl;
                 cout << "3.Fila de Operaciones Varias" << endl;
                 cin >> opc;
-
+                while (opc > 3 || opc < 1) {
+                    cout << "Opcion incorrecta, Elija nuevamente una opcion del 1 al 3" << endl;
+                    cin >> opc;
+                }
                 switch (opc) {
                     case 1: {
                         cout << "La ultima persona de la Fila de Depocitos tiene el DNI " << filaD.back().dni << endl;
@@ -265,6 +275,10 @@ int main() {
                 cout << "2.Fila de Extracciones" << endl;
                 cout << "3.Fila de Operaciones Varias" << endl;
                 cin >> opc;
+                while (opc > 3 || opc < 1) {
+                    cout << "Opcion incorrecta, Elija nuevamente una opcion del 1 al 3" << endl;
+                    cin >> opc;
+                }
                 cin;
 
                 switch (opc) {
@@ -296,7 +310,6 @@ int main() {
         }
 
     } while (opc != 0);
-    cout << "5. Ver Cantidad de Gente" << endl;
-    cout << "0. EXIT" << endl;
+
     return 0;
 }
