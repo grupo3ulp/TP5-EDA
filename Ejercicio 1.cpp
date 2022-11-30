@@ -30,8 +30,8 @@ public:
         return enteros[tope];
     }
 
-    void mostrarTope() {
-        cout << tope;
+    int size() {
+        return tope;
     }
 
     void pop() {
@@ -59,22 +59,22 @@ public:
     }
 
     void mostrarValores() {
-        if(!pilaVacia()){
+        if (!pilaVacia()) {
             for (int i = 0; i <= tope; ++i) {
                 cout << enteros[i] << " - ";
             }
-        }else{
-            cout<<"la Pila se encuentra vacia";
+        } else {
+            cout << "la Pila se encuentra vacia";
         }
         cout << endl;
     }
 
     bool contieneE(int n) {
         Pila aux;
-        bool flag=false;
-        for (int i = tope; i >=0; --i) {
+        bool flag = false;
+        for (int i = tope; i >= 0; --i) {
             if (getElementoTope() == n) {
-                flag=true;
+                flag = true;
                 break;
             } else {
                 aux.cargarPila(getElementoTope());
@@ -82,9 +82,9 @@ public:
             }
         }
         aux.pasaPila(*this);
-        if(flag){
+        if (flag) {
             return true;
-        }else{
+        } else {
             return false;
         }
 
@@ -103,43 +103,46 @@ public:
     }
 
     void Invierte1(Pila &pilaB, Pila &pilaC) {
-       pasaPila(pilaC);
-       pilaC.pasaPila(pilaB);
+        pasaPila(pilaC);
+        pilaC.pasaPila(pilaB);
     }
 
-    void Invierte2(Pila &pilaB) {
-        Pila x;
-        pasaPila(x);
-        x.pasaPila(pilaB);
-    }
-
-    bool remplazaXporY(int x,int y) {
+    bool remplazaXporY(int x, int y) {
         Pila aux;
-        bool flag=false;
-        for (int i = tope; i >=0; --i) {
+        bool flag = false;
+        for (int i = tope; i >= 0; --i) {
             if (getElementoTope() == x) {
-                enteros[tope]=y;
-                flag=true;
+                enteros[tope] = y;
+                flag = true;
             } else {
                 aux.cargarPila(getElementoTope());
                 pop();
             }
         }
         aux.pasaPila(*this);
-        if(!flag){
-            cout <<"El elemento x no se encuentra en la pila"<< endl;
+        if (!flag) {
+            cout << "El elemento x no se encuentra en la pila" << endl;
         }
     }
 
-    void resetPila(){
-        for (size_t i = tope; i < -1; i--)        {
+    void resetPila() {
+        for (size_t i = tope; i < -1; i--) {
             pop();
         }
-        
     }
 
 
 };
+
+void inverte2(Pila &pilaA, Pila &pilaB) {
+
+    if (pilaA.size() >= 0) {
+        int x = pilaA.getElementoTope();
+        pilaA.pop();
+        inverte2(pilaA, pilaB);
+        pilaB.cargarPila(x);
+    }
+}
 
 int main() {
     Pila pilaA;
@@ -148,128 +151,136 @@ int main() {
 
     int op;
 
-   do   {
-        cout << "---------------------------------------------------------------------------------------" <<endl;
+    do {
+        cout << "---------------------------------------------------------------------------------------" << endl;
         cout << "Menú principal" << endl;
         cout << "1. Cargar la pila A." << endl;
         cout << "2. Pasar todos los elementos de pilaA a PilaB." << endl;
         cout << "3. Buscar un número en la pila A." << endl;
         cout << "4. Coloca en pilaB los números pares y en PilaC los impares." << endl;
-        cout << "5. (Dada una Pila A con números, una Pila B y una Pila C vacías) Pasar los elementos de A a B de manera que queden en el mismo orden que estaban en A." << endl;
-        cout << "6. (Dada una Pila A, una variable X y una Pila Vacía B) Pasar los elementos de A a B de manera que queden en el mismo orden que estaban en A." << endl;
-        cout << "7. Dada una pila A con números, buscar si existe en A un entero “X”, y reemplazarlo por un número “Y”" << endl;
+        cout
+                << "5. (Dada una Pila A con números, una Pila B y una Pila C vacías) Pasar los elementos de A a B de manera que queden en el mismo orden que estaban en A."
+                << endl;
+        cout
+                << "6. (Dada una Pila A, una variable X y una Pila Vacía B) Pasar los elementos de A a B de manera que queden en el mismo orden que estaban en A."
+                << endl;
+        cout << "7. Dada una pila A con números, buscar si existe en A un entero “X”, y reemplazarlo por un número “Y”"
+             << endl;
         cout << "8. Salir" << endl;
-        cout << "---------------------------------------------------------------------------------------" <<endl;
+        cout << "---------------------------------------------------------------------------------------" << endl;
         cin >> op;
 
-        switch (op)    {
-        case 1:
-            for (int i = 1; i <= 10; ++i) {
-                pilaA.cargarPila(i);
-            }
-            cout << "La pila fue cargada exitosamente" << endl;
-            break;
-        case 2:
-            cout << "Pila A" << endl;
-            pilaA.mostrarValores();
-            pilaA.pasaPila(pilaB);
-            cout << "Pila B" << endl;
-            pilaB.mostrarValores();
-            cout << "Pila A" << endl;
-            pilaA.mostrarValores();
-            //reset para volver a usar las pilas
-            pilaB.resetPila();
-            for (int i = 1; i <= 10; ++i) {
-                pilaA.cargarPila(i);
-            }
-            break;
-        case 3:
-            cout << "Pila A" << endl;
-            pilaA.mostrarValores();
-            cout << "ingrese un valor a buscar" << endl;
-            int n;
-            cin >> n;
+        switch (op) {
+            case 1:
+                for (int i = 1; i <= 10; ++i) {
+                    pilaA.cargarPila(i);
+                }
+                cout << "La pila fue cargada exitosamente" << endl;
+                break;
+            case 2:
+                cout << "Pila A" << endl;
+                pilaA.mostrarValores();
+                pilaA.pasaPila(pilaB);
+                cout << "Pila B" << endl;
+                pilaB.mostrarValores();
+                cout << "Pila A" << endl;
+                pilaA.mostrarValores();
+                //reset para volver a usar las pilas
+                pilaB.resetPila();
+                for (int i = 1; i <= 10; ++i) {
+                    pilaA.cargarPila(i);
+                }
+                break;
+            case 3:
+                cout << "Pila A" << endl;
+                pilaA.mostrarValores();
+                cout << "ingrese un valor a buscar" << endl;
+                int n;
+                cin >> n;
 
-            if (pilaA.contieneE(n)) {
-                cout << "El elemento " << n << " se encuentra en la pila" << endl;
+                if (pilaA.contieneE(n)) {
+                    cout << "El elemento " << n << " se encuentra en la pila" << endl;
 
-            }else{
-                cout << "El elemento " << n << " No se encuentra en la pila" << endl;
-            }
+                } else {
+                    cout << "El elemento " << n << " No se encuentra en la pila" << endl;
+                }
 
-            break;
-        case 4:
-            cout << "Pila A" << endl;
-            pilaA.mostrarValores();
-            pilaA.separaPila(pilaB,pilaC);
-            cout << "Pila A" << endl;
-            pilaA.mostrarValores();
-            cout << "Pila B" << endl;
-            pilaB.mostrarValores();
-            cout << "Pila C" << endl;
-            pilaC.mostrarValores();
-            //reset para volver a usar las pilas
-            pilaB.resetPila();
-            pilaC.resetPila();
-            for (int i = 1; i <= 10; ++i) {
-                pilaA.cargarPila(i);
-            }
-            break;
-        case 5:
-            cout << "Pila A" << endl;
-            pilaA.mostrarValores();
-            pilaA.Invierte1(pilaB,pilaC);
-            cout << "Pila A" << endl;
-            pilaA.mostrarValores();
-            cout << "Pila B" << endl;
-            pilaB.mostrarValores();
-            cout << "Pila C" << endl;
-            pilaC.mostrarValores();
-            //reset para volver a usar las pilas
-            pilaB.resetPila();
-            pilaC.resetPila();
-            for (int i = 1; i <= 10; ++i) {
-                pilaA.cargarPila(i);
-            }
+                break;
+            case 4:
+                cout << "Pila A" << endl;
+                pilaA.mostrarValores();
+                pilaA.separaPila(pilaB, pilaC);
+                cout << "Pila A" << endl;
+                pilaA.mostrarValores();
+                cout << "Pila B" << endl;
+                pilaB.mostrarValores();
+                cout << "Pila C" << endl;
+                pilaC.mostrarValores();
+                //reset para volver a usar las pilas
+                pilaB.resetPila();
+                pilaC.resetPila();
+                for (int i = 1; i <= 10; ++i) {
+                    pilaA.cargarPila(i);
+                }
+                break;
+            case 5:
+                cout << "Pila A" << endl;
+                pilaA.mostrarValores();
+                pilaA.Invierte1(pilaB, pilaC);
+                cout << "Pila A" << endl;
+                pilaA.mostrarValores();
+                cout << "Pila B" << endl;
+                pilaB.mostrarValores();
+                cout << "Pila C" << endl;
+                pilaC.mostrarValores();
+                //reset para volver a usar las pilas
+                pilaB.resetPila();
+                pilaC.resetPila();
+                for (int i = 1; i <= 10; ++i) {
+                    pilaA.cargarPila(i);
+                }
 
-            break;
-        case 6:
-            cout << "Pila A" << endl;
-            pilaA.mostrarValores();
-            pilaA.Invierte2(pilaB);
-            cout << "Pila A" << endl;
-            pilaA.mostrarValores();
-            cout << "Pila B" << endl;
-            pilaB.mostrarValores();
-            //reset para volver a usar las pilas
-            pilaB.resetPila();
-            for (int i = 1; i <= 10; ++i) {
-                pilaA.cargarPila(i);
-            }
+                break;
+            case 6:
+                cout << "Pila A" << endl;
+                pilaA.mostrarValores();
+                cout << "Pila B" << endl;
+                pilaB.mostrarValores();
+                inverte2(pilaA, pilaB);
+                cout << "Pila A" << endl;
+                pilaA.mostrarValores();
+                cout << "Pila B" << endl;
+                pilaB.mostrarValores();
+                //reset para volver a usar las pilas
+                pilaB.resetPila();
+                for (int i = 1; i <= 10; ++i) {
+                    pilaA.cargarPila(i);
+                }
 
-            break;
-        case 7:
-            cout << "Pila A" << endl;
-            pilaA.mostrarValores();
-            cout << "Ingrese el elemento a remplazar de la pila A"<<endl;
-            int x;
-            cin>>x;
-            cout << "Ingrese el elemento por el cual lo quiere remplzar"<<endl;
-            int y;
-            cin>>y;
-            pilaA.remplazaXporY(x,y);
-            cout << "Pila A" << endl;
-            pilaA.mostrarValores();
-            break;
-        case 8:
-            cout << "Cerrando programa" << endl;
-            break;
-        
-        default:
-            break;
+
+                break;
+            case 7:
+                cout << "Pila A" << endl;
+                pilaA.mostrarValores();
+                cout << "Ingrese el elemento a remplazar de la pila A" << endl;
+                int x;
+                cin >> x;
+                cout << "Ingrese el elemento por el cual lo quiere remplzar" << endl;
+                int y;
+                cin >> y;
+                pilaA.remplazaXporY(x, y);
+                cout << "Pila A" << endl;
+                pilaA.mostrarValores();
+                break;
+            case 8:
+                cout << "Cerrando programa" << endl;
+                break;
+
+            default:
+                break;
         }
 
-    } while (op !=8);
+    } while (op != 8);
 
 
     return 0;
