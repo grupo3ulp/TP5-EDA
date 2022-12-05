@@ -239,7 +239,6 @@ int main() {
                 for (int i = 1; i <= 10; ++i) {
                     pilaA.cargarPila(i);
                 }
-
                 break;
             case 6:
                 cout << "Pila A" << endl;
